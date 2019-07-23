@@ -57,6 +57,9 @@ def say_hello():
             <br>
             <input type="submit" value="Submit">
         </form>
+        <form action="/diss">
+            <input type="submit" value="Insult me instead!">
+        </form>
       </body>
     </html>
     """
@@ -70,8 +73,6 @@ def greet_person():
 
     compliment = request.args.get('compliment')
 
-    # y = x
-
     return """
     <!doctype html>
     <html>
@@ -83,6 +84,26 @@ def greet_person():
       </body>
     </html>
     """.format(player, compliment)
+
+
+@app.route("/diss")
+def diss_person():
+    """Insult the user."""
+
+    player = request.args.get("person")
+
+    return f"""
+    <!doctype html>
+    <html>
+      <head>
+        <title>An Insult</title>
+      </head>
+      <body>
+        Hi, brat! I think you're scum!
+      </body>
+    </html>
+    """
+
 
 
 if __name__ == "__main__":
